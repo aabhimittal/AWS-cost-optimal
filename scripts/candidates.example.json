@@ -1,6 +1,13 @@
 [
-  {"name": "Savings Plans on baseline", "savings": 8000, "confidence": 0.95, "effort": 1, "risk": 0.02},
+  {"name": "Savings Plans on baseline", "savings": 8000, "confidence": 0.95, "effort": 1, "risk": 0.02,
+   "group": "compute-baseline", "excludes": ["Spot for CI runners"],
+   "notes": "1-year no-upfront compute SP sized with commitment_planner.py"},
   {"name": "Delete orphaned EBS volumes", "savings": 1200, "confidence": 0.99, "effort": 0.5, "risk": 0.0},
-  {"name": "Right-size app fleet", "savings": 3500, "confidence": 0.75, "effort": 3, "risk": 0.25},
+  {"name": "Tag coverage to 95%", "savings": 0, "confidence": 1.0, "effort": 2, "risk": 0.0,
+   "notes": "no direct saving, but showback cannot start without it"},
+  {"name": "Non-prod showback", "savings": 2600, "confidence": 0.6, "effort": 2, "risk": 0.05,
+   "requires": ["Tag coverage to 95%"]},
+  {"name": "Right-size app fleet", "savings": 3500, "confidence": 0.75, "effort": 3, "risk": 0.25,
+   "group": "compute-baseline"},
   {"name": "Spot for CI runners", "savings": 5000, "confidence": 0.7, "effort": 5, "risk": 0.3}
 ]
